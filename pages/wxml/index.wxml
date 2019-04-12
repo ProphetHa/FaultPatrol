@@ -1,0 +1,80 @@
+<!-- Ctrl+/添加注释快捷键 -->
+<!-- 一个简单的文本标签 -->
+<text>hello world</text>
+<!-- view 中包含了text标签 -->
+<view>
+  <text>hello world</text>
+</view>
+
+<!-- 带属性的图片标签的例子 -->
+<!-- <image class="userinfo-avatar" src="./image/a.png"></image> -->
+<!-- 
+{
+  time:(new Date()).toString()
+}
+ -->
+<text>当前时间：{{time}}</text>
+<!-- 
+{
+  var2:undefined,
+  var3:null,
+  var4:"var4"
+}
+ -->
+ <view>{{var1}}</view>
+ <view>{{var2}}</view>
+ <view>{{var3}}</view>
+ <view>{{var4}}</view>
+ <!-- 根据a的值是否等于10在页面输出不同的内容 -->
+ <text>{{a == 10?"变量a等于10":"变量a不等于10"}}</text>
+ <!-- 支持字符串拼接 -->
+ <!-- 
+ {
+  name:'world'
+ }
+  -->
+ <view>{{"hello " + name}}</view>
+ <!-- {{}} 中还可以直接放置数字、字符串或者数组 -->
+ <text>{{[1,2,3]}}</text>
+ <!-- 使用wx:if="{{condition}}"来判断是否需要渲染该代码块 -->
+ <view wx:if="{{condition}}"> True</view>
+ <!-- 使用wx:elif和wx:else来添加一个else块 -->
+ <view wx:if="{{length > 5}}"> 1 </view>
+ <view wx:elif="{{length > 2}}"> 2 </view>
+ <view wx:else> 3 </view>
+ <!-- 在组件上使用wx:for控制属性绑定一个数组，即可使用数组中各项的数据重复渲染该组件。默认数组的当前项的下标变量名默认为index,数组当前项的变量名默认为item -->
+ <view wx:for="{{array}}" wx:key="*this" wo:for-item='message'>{{index}}:{{item.message}}</view>
+ <!-- wx:key的值以两种形式提供 
+ 1.字符串，代码在for循环的array中item的某个property，该property的值需要是列表中唯一的字符串或数字，且不能被动态改变。
+ 2.保留关键字this代表在for循环中item本身，这种表示需要item本身是一个唯一的字符串或者数字
+
+ 当数据改变触发渲染层重新渲染的时候，会校正带有key的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提供列表渲染时的效率。
+ -->
+ <!-- 放一排开关 -->
+ <switch wx:for="{{objectArray}}" wx:key="unique">{{item.id}}</switch>
+ <!-- 放两个按钮 -->
+<button bindtap="switch">Switch</button>
+<button bindtap="addToFront">Add to the front</button>
+
+<switch wx:for="{{numberArray}}" wx:key="*this">{{item}}</switch>
+<button bindtap="addNumberToFront">Add to the front</button>
+<!-- WXML提供模板(template)的应用，可以在模板中定义代码片段，然后在不同的地方调用。使用name属性，作为模板的名字。然后在<template/>内定义代码片段 -->
+<template name="msgItem">
+  <view>
+    <text>{{index}}:{{msg}}</text>
+    <text>Time:{{time}}</text>
+  </view>
+</template>
+<!-- 使用is属性，声明需要使用的模板，然后将模板所需要的data传入 -->
+<template is="msgItem" data="{{...item}}"/>
+<!-- is可以动态决定具体需要渲染哪个模板 -->
+<template name="odd">
+  <view>odd</view>
+</template>
+<template name="even">
+  <view>even</view>
+</template>
+
+<block wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
+  <template is="{{item % 2 == 0?'even':'odd'}}"/>
+</block>

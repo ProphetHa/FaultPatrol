@@ -1,0 +1,33 @@
+<!--pages/audio/index.wxml-->
+<audio
+  poster='{{poster}}' 
+  name='{{name}}'
+  author='{{author}}'
+  src='{{src}}'
+  id='myAudio'
+  controls
+  loop
+>
+</audio>
+<button type='primary' bindtap='audioPlay'>播放</button>
+<button type='primary' bindtap='audioPause'>暂停</button>
+<button type='primary' bindtap='audio14'>设置当前播放时间为14秒</button>
+<button type='primary' bindtap='audioStart'>回到开头</button>
+<view>
+  <checkbox-group bindchange="checkboxChange">
+    <label class="checkbox" wx:for="{{items}}">
+      <checkbox value="{{item.name}}" checked="{{item.checked}}"/>
+      {{item.value}}
+    </label>
+  </checkbox-group>
+</view>
+<!-- <wxs src = "./../tools.wxs" module = "tools"/> -->
+<wxs src = "./../logic.wxs" module = "logic"/>
+<!-- <view>{{tools.msg}}</view>
+<view>{{tools.bar(tools.FOO)}}</view> -->
+
+<!-- 双闭合，不使用src引用wxs文件路径 -->
+<wxs module = "foo">
+  var some_msg = "hello world"; module.exports = { msg : some_msg, }
+</wxs>
+<view>{{foo.msg}}</view>

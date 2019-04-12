@@ -1,0 +1,24 @@
+<!--pages/video/index.wxml-->
+
+<view class='section'>
+  <video src='{{src}}' controls></video>
+  <view class='btn-area' >
+    <button bindtap='bindButtonTap' hover-class = '#btn-hover-area'  size='default' type='default' plain ='true'>获取视频</button>
+  </view>
+</view>
+<view class='section'>
+  <video
+    id='myVideo'
+    src='http://vhotwsh.video.qq.com/flv/97/175/z02012qvfr4.p201.1.mp4?platform=10201&sdtfrom=&vkey=858926A1D2BBFDCAC89F08ABEA0F687D19FF73A9AB28A1927AE52DBBC58CAD14126CC915E2E254A4429A95CCC3F794BF98D4B83B4C5BF0177B3F26287261869D3C604E8D0952188FCA6D787197F28FC8AFF9B82AC9661A971715FA2C9BEC92FBB1876CEB38934E1B970165B2922E6953FFEF4EDB969392B4&fmt=shd&level=0'
+    danmu-list='{{danmuList}}'
+    
+    enable-danmu
+    danmu-btn
+    controls
+  ></video>
+  <view class='btn-area'>
+    <button bindtap='bindButtonTap' hover-class = 'btn-hover-area'  size='default' type='default' plain ='true'>获取视频</button>
+    <input bindblur='bindInputBlur'/>
+    <button bindtap='bindSendDanmu' hover-class = 'btn-hover-area'  size='default' type='default' plain ='true'>发送弹幕</button>
+  </view>
+</view>

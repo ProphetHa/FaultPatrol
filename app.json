@@ -1,0 +1,53 @@
+{
+  "pages":[
+    "pages/audio/index",
+    "pages/video/index",
+    "pages/index/index",
+    "pages/wxml/index",   
+    "pages/logs/logs"
+  ],
+  "workers":"workers",
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "window":{
+    "enablePullDownRefresh":true,
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "tabBar":{
+    "list":[
+      {
+        "pagePath":"pages/audio/index",
+        "text":"首页",
+        "iconPath": "./icon/first.png",
+        "selectedIconPath": "./icon/first.png"
+      },
+      {
+        "pagePath":"pages/index/index",
+        "text":"导航",
+        "iconPath": "./icon/nav-1.png",
+        "selectedIconPath":"./icon/nav-2.png"
+
+      },
+      {
+        "pagePath":"pages/logs/logs",
+        "text":"日志",
+        "iconPath": "./icon/log-1.png",
+        "selectedIconPath": "./icon/log-2.png"
+      }
+    ]
+  },
+  "networkTimeout":{
+    "request":10000,
+    "downloadFile":10000
+  },
+  "debug":true
+}
